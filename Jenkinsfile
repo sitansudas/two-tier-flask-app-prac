@@ -1,9 +1,15 @@
 pipeline{
     agent {label "dev"};
     stages{
-        stage("Code"){
+        stage("Code clone"){
             steps{
                 git url: "https://github.com/sitansudas/two-tier-flask-app-prac.git", branch: "master"
+            }
+        }
+
+        stage("Trivy file system scan"){
+            steps{
+                sh "trivy fs . -o results.json"
             }
         }
 
