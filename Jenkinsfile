@@ -46,9 +46,18 @@ pipeline{
     }
 
 post {
-    script{
-        email_text("sdjgaming008@gmail.com")
+    success {
+        script {
+            email_success("sdjgaming008@gmail.com")
+        }
     }
+
+    failure {
+        script {
+            email_failure("sdjgaming008@gmail.com")
+        }
+    }
+    
 }
     
 }
